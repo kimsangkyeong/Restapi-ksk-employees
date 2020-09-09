@@ -19,7 +19,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
                            envVar(key: 'JVM_HEAP_MAX', value: '-Xmx192m')
                    ]
                ),
-               containerTemplate(name: 'maven', image: 'maven:3.6.3-openjdk-14-slim',             ttyEnabled: true, command: 'cat'),
+               containerTemplate(name: 'maven', image: 'maven:3.6.3-openjdk-14-slim',        ttyEnabled: true, command: 'cat'),
                containerTemplate(name: 'awscli', image: 'amazon/aws-cli:2.0.22',             ttyEnabled: true, command: 'cat'),
                containerTemplate(name: 'docker', image: 'docker:18.06',                      ttyEnabled: true, command: 'cat',
                                  resourceLimitMemory: '128Mi'),
@@ -44,6 +44,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
                     container('maven') {
                         sh 'mvn clean package -DskipTests'
                     }
+                }
 
                 stage('ECR Login') {
                     container('awscli') {
