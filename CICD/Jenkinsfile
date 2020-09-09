@@ -36,12 +36,12 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
 {
         node(label) {
                 stage('CheckOut Source') {
-                    echo "git checking out..."
                     git branch: "master", url: "${git_url}", credentialsId: "${git_credential}"
                 }
 
                 stage('build the source code via maven') {
                     container('maven') {
+                        sh 'mvn clean' 
                         sh 'mvn compile' 
                         sh 'mvn package -DskipTests'
                     }
