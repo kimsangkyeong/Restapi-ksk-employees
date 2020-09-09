@@ -41,18 +41,14 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
 
                 stage('build the source code via maven') {
                     container('maven') {
-                        sh 'mvn clean' 
-                        sh 'mvn compile' 
-                        sh 'mvn package -DskipTests'
+                        sh 'mvn clean package -DskipTests'
                     }
                 }
 
                 stage('ECR Login') {
                     container('awscli') {
-                        echo "ecr logining "
                         sh "aws ecr get-login-password --region ap-northeast-2"
                         ecr_credential = sh(script: "aws ecr get-login-password --region ap-northeast-2", returnStdout:true)
-                        echo ".. ${ecr_credential}"
                     }
                 }
 
@@ -66,7 +62,6 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
 
                 stage('k8s deploy image = ${image_tag}') {
                     container('kubectl') {
-                        sh "kubectl delete -f CICD/Deployment.yaml"
                         sh "kubectl apply -f CICD/Deployment.yaml"
                         //sh "kubectl get pod,svc,ingress,deployment -n ${namespace} -l app=${app}"
                         sh "kubectl get pod,svc,ingress,deployment -n ${namespace} --show-labels"
