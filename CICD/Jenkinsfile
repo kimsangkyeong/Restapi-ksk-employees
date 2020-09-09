@@ -42,7 +42,8 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
 
                 stage('build the source code via maven') {
                     container('maven') {
-                        sh 'mvn clean package -DskipTests'
+                        sh 'mvn compile' 
+                        sh 'mvn package -DskipTests'
                     }
                 }
 
