@@ -66,6 +66,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'jenkins',
 
                 stage('k8s deploy image = ${image_tag}') {
                     container('kubectl') {
+                        sh "kubectl delete -f CICD/Deployment.yaml"
                         sh "kubectl apply -f CICD/Deployment.yaml"
                         //sh "kubectl get pod,svc,ingress,deployment -n ${namespace} -l app=${app}"
                         sh "kubectl get pod,svc,ingress,deployment -n ${namespace} --show-labels"
