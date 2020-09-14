@@ -21,7 +21,7 @@ spec:
         image: 847322629192.dkr.ecr.ap-northeast-2.amazonaws.com/api-backend-dualcidr:1.2
         imagePullPolicy: Always
         ports:
-        - containerPort: 30002
+        - containerPort: 30003
           name: http
           protocol: TCP
 ---
@@ -36,9 +36,9 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 30002
+      port: 30003
       protocol: TCP
-      targetPort: 30002
+      targetPort: 30003
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -59,4 +59,4 @@ spec:
       - path: /api/ksk
         backend:
           serviceName: restapi-ksk-employees
-          servicePort: 30002
+          servicePort: 30003
