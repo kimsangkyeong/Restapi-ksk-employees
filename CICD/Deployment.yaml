@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: restapi-ksk-employees
-        image: 847322629192.dkr.ecr.ap-northeast-2.amazonaws.com/restapi-ksk-employees-dualcidr:1.2
+        image: 847322629192.dkr.ecr.ap-northeast-2.amazonaws.com/api-backend-dualcidr:1.2
         imagePullPolicy: Always
         ports:
         - containerPort: 30002
