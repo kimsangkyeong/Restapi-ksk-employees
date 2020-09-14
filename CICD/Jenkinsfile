@@ -4,7 +4,7 @@ def git_credential = "mygituser"
 def ecr_url        = "847322629192.dkr.ecr.ap-northeast-2.amazonaws.com"
 def ecr_repo       = "api-backend-dualcidr"
 def namespace      = "fruits"
-def app            = "api-backend"
+def app            = "restapi-ksk-employees"
 def app_ver        = "1.2"
 def ecr_credential = "not_yet"
 
