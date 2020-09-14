@@ -8,7 +8,7 @@ COPY ${JAR_FILE} /app/app.jar
 WORKDIR /app
 
 # RestAPI listen port
-EXPOSE 30001
+EXPOSE 30002
 # DB encrypt key
 ENV JASYPT_ENCRYPTOR_PASSWORD=newkey
 
