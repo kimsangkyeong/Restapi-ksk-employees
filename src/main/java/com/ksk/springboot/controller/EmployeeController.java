@@ -22,7 +22,7 @@ import com.ksk.springboot.repository.EmployeeRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/svc/v1/")
+@RequestMapping("/api/ksk/v1/")
 public class EmployeeController {
 	
 	@Autowired

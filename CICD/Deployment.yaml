@@ -2,51 +2,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-backend
+  name: restapi-ksk-employees
   namespace: fruits
   labels:
-    app: api-backend
+    app: restapi-ksk-employees
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-backend
+      app: restapi-ksk-employees
   template:
     metadata:
       labels:
-        app: api-backend
+        app: restapi-ksk-employees
     spec:
       containers:
-      - name: api-backend
-        image: 847322629192.dkr.ecr.ap-northeast-2.amazonaws.com/api-backend-dualcidr:1.0
+      - name: restapi-ksk-employees
+        image: 847322629192.dkr.ecr.ap-northeast-2.amazonaws.com/restapi-ksk-employees-dualcidr:1.2
         imagePullPolicy: Always
         ports:
-        - containerPort: 30001
+        - containerPort: 30002
           name: http
           protocol: TCP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: api-backend
+  name: restapi-ksk-employees
   namespace: fruits
 spec:
   selector:
-    app: api-backend
+    app: restapi-ksk-employees
   type: ClusterIP
   ports:
     - name: http
-      port: 30001
+      port: 30002
       protocol: TCP
-      targetPort: 30001
+      targetPort: 30002
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: api-backend-pub-ingress
+  name: restapi-ksk-employees-pub-ingress
   namespace: fruits
   labels:
-    app: api-backend
+    app: restapi-ksk-employees
   annotations:
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/rewrite-target: /
@@ -58,5 +58,5 @@ spec:
       paths:
       - path: /api/svc
         backend:
-          serviceName: api-backend
-          servicePort: 30001
+          serviceName: restapi-ksk-employees
+          servicePort: 30002

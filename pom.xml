@@ -9,10 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ksk</groupId>
-	<artifactId>Sb-web-backend</artifactId>
+	<artifactId>Restapi-ksk-employees</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Sb-web2</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Restapi-ksk-employees</name>
 
 	<properties>
 		<java.version>11</java.version>
@@ -67,4 +66,5 @@
 		</plugins>
 	</build>
 
+	<description>Advanced TCL</description>
 </project>
