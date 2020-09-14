@@ -56,7 +56,7 @@ spec:
   - host: app-bff.pub.tbiz-atcl.net
     http:
       paths:
-      - path: /api/svc
+      - path: /api/ksk
         backend:
           serviceName: restapi-ksk-employees
           servicePort: 30002
